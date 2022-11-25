@@ -4,29 +4,29 @@ using UnityEngine;
 
 public class BirdFly : MonoBehaviour
 {
-    [SerializeField] private float velocity;
+    public float velocity;
     private Rigidbody2D rb;
-    private Animator playerAnimator;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerAnimator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
-        {
-            rb.velocity = Vector2.up * velocity;
-            playerAnimator.Play("bird_fly");
-        }
+        FlyTheBird();
     }
 
-    void FixedUpdate() 
+    public void FlyTheBird()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.velocity = Vector2.up * velocity;
+        }
     }
 }
