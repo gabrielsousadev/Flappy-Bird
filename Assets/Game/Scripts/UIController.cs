@@ -25,8 +25,6 @@ public class UIController : MonoBehaviour
     public void BtnStartGame()
     {   
         player.FlyTheBird();
-        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        player.GetComponent<Rigidbody2D>().velocity = Vector2.up * player.velocity;
         gameManager.startGame = true;
         btnStart.gameObject.SetActive(false);
     }

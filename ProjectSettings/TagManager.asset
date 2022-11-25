@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Points
+  - Pipe
   layers:
   - Default
   - TransparentFX
@@ -45,11 +46,11 @@ TagManager:
   - name: Background
     uniqueID: 1556374523
     locked: 0
-  - name: Player
-    uniqueID: 3491719047
-    locked: 0
   - name: Pipes
     uniqueID: 1982133409
+    locked: 0
+  - name: Player
+    uniqueID: 3491719047
     locked: 0
   - name: Ground
     uniqueID: 2732038595

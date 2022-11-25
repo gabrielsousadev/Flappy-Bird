@@ -25,7 +25,6 @@ public class PipeSpawner : MonoBehaviour
                 GameObject newPipe = Instantiate(pipePrefab);
                 newPipe.transform.parent = this.transform;
                 newPipe.transform.position = (Vector2)transform.position + new Vector2(0f, Random.Range(-height, height));
-                Destroy(newPipe, 10);
                 timer = 0;
             }
 

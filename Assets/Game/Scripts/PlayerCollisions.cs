@@ -5,24 +5,33 @@ using UnityEngine;
 public class PlayerCollisions : MonoBehaviour
 {
     private GameManager gameManager;
+    private AudioManager audioManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D target) 
+    private void OnTriggerEnter2D(Collider2D target)
     {
-        if(target.gameObject.CompareTag("Points"))
+        if (target.gameObject.CompareTag("Points"))
         {
             gameManager.score++;
             target.GetComponent<AudioSource>().Play();
         }
 
-        if(target.gameObject.CompareTag("Pipes"))
+        if (target.gameObject.CompareTag("Pipe") && !gameManager.gameover)
         {
-            //gameover
+            gameManager.startGame = false;
+            gameManager.gameover = true;
+            gameObject.GetComponent<Animator>().enabled = false;
+            gameObject.GetComponent<BirdFly>().rb.bodyType = RigidbodyType2D.Static;
+            gameObject.GetComponent<AudioSource>().clip = audioManager.playerAudios[1];
+            gameObject.GetComponent<AudioSource>().Play();
+            StartCoroutine(gameObject.GetComponent<BirdFly>().BirdGameOver());
         }
     }
 }

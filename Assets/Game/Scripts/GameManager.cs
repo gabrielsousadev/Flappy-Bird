@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool startGame = false;
+    public bool startGame, gameover;
     public int score;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 }
