@@ -11,9 +11,7 @@ public class PipeSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject newPipe = Instantiate(pipePrefab);
-        newPipe.transform.position = (Vector2)transform.position + new Vector2(0f, Random.Range(-height, height));
-        Destroy(newPipe, 10);
+        
     }
 
     // Update is called once per frame
@@ -22,6 +20,7 @@ public class PipeSpawner : MonoBehaviour
         if(timer > maxTime)
         {
             GameObject newPipe = Instantiate(pipePrefab);
+            newPipe.transform.parent = this.transform;
             newPipe.transform.position = (Vector2)transform.position + new Vector2(0f, Random.Range(-height, height));
             Destroy(newPipe, 10);
             timer = 0;
