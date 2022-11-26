@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BirdFly : MonoBehaviour
 {
-    public float velocity;
+    [SerializeField] private float velocity;
     [HideInInspector] public Rigidbody2D rb;
     private GameManager gameManager;
     private AudioManager audioManager;
@@ -31,6 +31,7 @@ public class BirdFly : MonoBehaviour
             gameObject.GetComponent<AudioSource>().Play();
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.up * velocity;
+            
         }
 
         BirdRotation();

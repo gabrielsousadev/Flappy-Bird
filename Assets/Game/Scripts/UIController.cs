@@ -7,7 +7,6 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     private GameManager gameManager;
-    private BirdFly player;
     public GameObject panelStart, panelRestart, panelGame;
     public TMP_Text txtScore, txtFinalScore, txtBestScore;
     public Image[] medals;
@@ -16,13 +15,6 @@ public class UIController : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        player = FindObjectOfType<BirdFly>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void StartGame()

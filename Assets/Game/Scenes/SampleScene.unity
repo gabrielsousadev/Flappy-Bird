@@ -1561,7 +1561,6 @@ MonoBehaviour:
   gameover: 0
   score: 0
   gameGround: {fileID: 428616581}
-  player: {fileID: 0}
 --- !u!4 &1116719042
 Transform:
   m_ObjectHideFlags: 0

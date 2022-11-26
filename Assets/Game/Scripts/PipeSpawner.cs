@@ -7,8 +7,7 @@ public class PipeSpawner : MonoBehaviour
     [SerializeField] private float maxTime = 1, timer = 0, height;
     [SerializeField] private GameObject pipePrefab;
     private GameManager gameManager;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {

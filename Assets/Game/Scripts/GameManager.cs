@@ -5,10 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool startGame, gameover;
-    public int score;
-    public GameObject gameGround;
+    [HideInInspector] public int score;
+    [SerializeField] private GameObject gameGround;
     private AudioManager audioManager;
-    public BirdFly player;
+    private BirdFly player;
     private PipeSpawner pipeSpawner;
     private UIController uiController;
     private SaveController saveController;
@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
         player.GetComponent<AudioSource>().clip = audioManager.playerAudios[1];
         player.GetComponent<AudioSource>().Play();
         uiController.txtFinalScore.text = score.ToString();
-        Medals();
         uiController.txtBestScore.text = saveController.GetData().ToString();
+        Medals();
     }
 
     public void StartGame()
