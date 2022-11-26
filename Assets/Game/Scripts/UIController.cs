@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
-    public Button btnStart;
     private GameManager gameManager;
     private BirdFly player;
+    public GameObject panelStart, panelRestart, panelGame;
+    public TMP_Text txtScore, txtFinalScore, txtBestScore;
+    public Image[] medals;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +25,17 @@ public class UIController : MonoBehaviour
         
     }
 
-    public void BtnStartGame()
+    public void StartGame()
     {   
-        player.FlyTheBird();
-        gameManager.startGame = true;
-        btnStart.gameObject.SetActive(false);
+        gameManager.StartGame();
+        panelStart.gameObject.SetActive(false);
+        panelGame.gameObject.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        panelRestart.gameObject.SetActive(false);
+        panelStart.gameObject.SetActive(true);
+        gameManager.RestartGame();
     }
 }
