@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public BirdFly player;
     private PipeSpawner pipeSpawner;
     private UIController uiController;
+    private SaveController saveController;
 
     private void Start()
     {
@@ -18,10 +19,12 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<BirdFly>();
         pipeSpawner = FindObjectOfType<PipeSpawner>();
         uiController = FindObjectOfType<UIController>();
+        saveController = FindObjectOfType<SaveController>();
     }
 
     public void GameOver(GameObject player)
     {
+        SaveScore();
         uiController.panelRestart.gameObject.SetActive(true);
         uiController.panelGame.gameObject.SetActive(false);
         startGame = false;
@@ -33,6 +36,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<AudioSource>().Play();
         uiController.txtFinalScore.text = score.ToString();
         Medals();
+        uiController.txtBestScore.text = saveController.GetData().ToString();
     }
 
     public void StartGame()
@@ -76,5 +80,17 @@ public class GameManager : MonoBehaviour
             uiController.medals[0].gameObject.SetActive(false);
             uiController.medals[1].gameObject.SetActive(true);
         }
+    }
+
+    public void SaveScore()
+    {
+        int bestScore = saveController.GetData();
+
+        if(score > bestScore)
+        {
+            saveController.SetData(score);
+        }
+
+        Debug.Log(saveController.GetData());
     }
 }
