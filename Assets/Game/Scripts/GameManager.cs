@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<BirdFly>().rb.bodyType = RigidbodyType2D.Static;
         player.GetComponent<AudioSource>().clip = audioManager.playerAudios[0];
         player.transform.position = new Vector2(-0.5f, 0f);
+        player.transform.GetChild(0).transform.rotation = Quaternion.identity;
         score = 0;
         uiController.txtScore.text = score.ToString();
         DestroyAllPipes();
@@ -90,7 +91,5 @@ public class GameManager : MonoBehaviour
         {
             saveController.SetData(score);
         }
-
-        Debug.Log(saveController.GetData());
     }
 }

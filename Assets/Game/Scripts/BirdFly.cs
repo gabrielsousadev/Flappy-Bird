@@ -32,6 +32,8 @@ public class BirdFly : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Dynamic;
             rb.velocity = Vector2.up * velocity;
         }
+
+        BirdRotation();
     }
 
     public IEnumerator BirdGameOver()
@@ -41,5 +43,29 @@ public class BirdFly : MonoBehaviour
         gameObject.GetComponent<AudioSource>().Play();
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.velocity = Vector2.zero;
+    }
+
+    private void BirdRotation()
+    {
+        if (gameManager.startGame)
+        {
+            if (rb.velocity.y < 0f)
+            {
+                this.transform.GetChild(0).eulerAngles -= new Vector3(0f, 0f, 2f);
+                if (this.transform.GetChild(0).eulerAngles.z < 330f && this.transform.GetChild(0).eulerAngles.z > 45f)
+                {
+                    this.transform.GetChild(0).eulerAngles = new Vector3(0f, 0f, 330f);
+                }
+            }
+
+            else if (rb.velocity.y > 0f)
+            {
+                this.transform.GetChild(0).eulerAngles += new Vector3(0f, 0f, 2f);
+                if (this.transform.GetChild(0).eulerAngles.z > 45f)
+                {
+                    this.transform.GetChild(0).eulerAngles = new Vector3(0f, 0f, 45f);
+                }
+            }
+        }
     }
 }
